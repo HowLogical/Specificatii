@@ -203,18 +203,95 @@ clasa Politist mosteneste Persoana {
     2. Multimi de tipuri complexe
     3. Multimi de multimi
 - Multimile se considera a fi implicit neordonate
-- Exemple:
+- Exemple de tipuri de multimi:
     - **text**[] - reprezinta o multime de texte
     - **real**[] - reprezinta o multime de numere reale
     - **ActIdentitate**[] - reprezinta o multime de acte de identitate
     - **Persoana**[] - reprezinta o multime de persoane
     - **Persoana\[\]**[] - reprezinta o multime de multimi de persoane
+- Valorile concrete ale unei multimi vor fi ilustrate in paranteze patrate (de exemplu in cazul variabilelor)
+- Exemple de valori de multimi:
+    ```javascript
+    [1, 2, 3, 4]     //-> Multime de tip intreg[]
+    [1, 2.2, 3.0, 4] //-> Multime de tip real[]
+    ["Exemplu", "de", "multime"] //-> Multime de tip text[]
+    [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]
+    ]   //-> Multime de tip intreg[][] (matrice)
+    ```
+
+## 1.4. Valoarea null
+- Implicit orice tip din cele 3 categorii principale poate lua valoarea **null**.
+- Pentru a specifica o proprietate sau o variabila care nu poate lua valoarea **null** putem adauga un "!" dupa tip.
+- Exemple:
+    ```javascript
+    clasa TipStrada {
+        denumire: text! //Un obiect de tip TipStrada nu poate exista fara denumire
+        abreviere: text
+    }
+    ```
+     ```javascript
+    clasa Profesor {
+        // ...
+    }
+
+    clasa Elev {
+        diriginte: Profesor! //Un obiect de tip Elev nu poate exista fara sa aiba asociat un diriginte de tip Profesor
+    }
+    ```
 
 # 2. Variabile
+- O variabila reprezinta un simbol prin care se face trimitere la o valoare de un anumit tip.
+- Le putem folosi pentru a reprezenta valori temporare atunci cand descriem algoritmi.
+- Declaram variabilele prin cuvantul "fie".
+- Conventional putem declara o variabila folosind sintaxa
+    ```javascript
+    fie denumireVariabila: TipVariabila = valoareInitiala
+    ```
+- Denumirea unei variabile va fi in format [camelCase](https://en.wikipedia.org/wiki/Camel_case) (prima litera mica).
+- Ulterior putem modifica valoarea variabilei folosind sintaxa
+    ```javascript
+    denumireVariabila = valoare
+    ```
+- Exemple:
+    ```javascript
+    fie x: intreg = 10  //x = 10
+    x = x * x           //x = 100
+    x = x - 5           //x = 95
 
-### 1.2.4. Obiecte
+    fie y: real = x + 20.5  //y = 115.5
 
-### 1.2.4. Exemple de valori 
+    fie z: real = x + y     //z = 210.5
+    ```
+
+    ```javascript
+    fie ani: intreg[] = [2019, 2020, 2021]
+    //-> ani = [2019, 2020, 2021]
+
+    ani = ani + [2022, 2023] //Se adauga elementele 2022 si 2023 in multimea ani
+    //-> ani = [2019, 2020, 2021, 2022, 2023]
+
+    ani = ani - [2020, 2023] //Din multimea ani se sterg elementele 2020 si 2023
+    //-> ani = [2019, 2021, 2022]
+
+    ani = []    //multimea este golita
+    //-> ani = []
+    ```
+
+     ```javascript
+    //Tipul ActIdentitate astfel cum a fost definit la punctul 1.2.1.
+    fie buletinReclamant: ActIdentitate = {
+        id: ""
+    }
+
+    buletinReclamant = null
+    ```
+
+# 3. Obiecte
+- Obiectele reprezinta valori concrete ale claselor.
+
 ```javascript
 //Fie `andra` un obiect de tip Persoana (conform definitiei de la 1.2.2).  
 fie andra: Persoana = {
@@ -238,6 +315,6 @@ fie andra: Persoana = {
 }
 ```
 
-# 3. Functii
+# 4. Functii
 
 ## 2.1. Functii de baza
