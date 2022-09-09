@@ -59,7 +59,7 @@ Tipurile de baza sunt:
     - Reprezinta un identificator unic aleator
 
 ## 1.2. Tipuri complexe de date (**clase**)
-Tipurile complexe de date (clasele) sunt folosite pentru a reprezenta obiecte ce contin o serie de proprietati si nu pot fi definite print-un singur tip primtiv.  
+Tipurile complexe de date (clasele) sunt folosite pentru a reprezenta obiecte ce contin o serie de proprietati si nu pot fi definite print-un singur tip primtiv. Clasele servesc drept "template-uri" pentru crearea de obiecte.  
 
 - O **clasa** este reprezentata de denumirea sa (ex.: `ActIdentitate`).
 - Denumirea unei **clase** este **unica** in contextul aplicatiei.
@@ -150,6 +150,81 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 
 *Nota: A se vedea sectiunea 1.3. pentru explicatia notatiei "[]"*
 
-# 2. Functii
+### 1.2.3. Mostenire de clase
+- O clasa poate mosteni una sau mai multe clase.
+- Clasa mostenita se numeste clasa parinte iar clasa mostenitoare se numeste clasa copil.
+- Clasa copil preia toate proprietatile clasei parinte (si a claselor mostenite de clasa parinte daca este cazul)
+- Mostenirea nu se poate realiza daca se creeaza un ciclu (de exemplu o clasa A nu poate mosteni o clasa B daca simultan clasa B mosteneste clasa A)
+- Mostenirea nu se poate realiza daca exista un conflict de tipuri intre proprietati
+- Notam mostenirea in continuarea denumirei clasei prin cuvantul "mosteneste" urmat de denumirile claselor parinte separate prin virgula.
+    ```javascript
+    clasa A { }
+    clasa B { }
+    clasa C mosteneste A, B {
+
+    }
+    ```
+**Exemplu:**
+```javascript
+clasa Entitate {
+    id: id
+}
+// Proprietati:
+// id: id
+
+
+// Clasa Persoana va prelua proprietatea "id" de la Entitate
+clasa Persoana mosteneste Entitate {
+    nume: text
+    prenume: text
+}
+// Proprietati:
+// id: id
+// nume: text
+// prenume: text
+
+
+// Clasa Politist va prelua proprietatile "id", "nume" si "prenume" de la Persoana
+clasa Politist mosteneste Persoana {
+    nrLegitimatie: text
+}
+// Proprietati:
+// id: id
+// nume: text
+// prenume: text
+// nrLegitimatie: text
+```
+
+## 1.3. Multimi
+
+# 2. Variabile
+
+### 1.2.4. Obiecte
+
+### 1.2.4. Exemple de valori 
+```javascript
+//Fie `andra` un obiect de tip Persoana (conform definitiei de la 1.2.2).  
+fie andra: Persoana = {
+    id: "0b809da0-5933-4785-be89-8e3e6d5e9abd",
+    nume: "Stan"
+    prenume: "Andra"
+    acteIdentitate: [
+        {
+            id: id
+            cnp: text
+            serie: text
+            nr: text //Numarul cartii de identitate
+            nume: text
+            prenume: text
+            dataEliberare: data
+            dataExpirare: data
+        }
+    ],
+    mama: null
+    tata: null
+}
+```
+
+# 3. Functii
 
 ## 2.1. Functii de baza
