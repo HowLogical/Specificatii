@@ -156,6 +156,7 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 - Clasa copil preia toate proprietatile clasei parinte (si a claselor mostenite de clasa parinte daca este cazul)
 - Mostenirea nu se poate realiza daca se creeaza un ciclu (de exemplu o clasa A nu poate mosteni o clasa B daca simultan clasa B mosteneste clasa A)
 - Mostenirea nu se poate realiza daca exista un conflict de tipuri intre proprietati
+- Un obiect de tipul clasei Parinte poate fi substituit cu un obiect de tipul unei clase Copil (a se vedea capitolul "2. Variabile" pentru exemple)
 - Notam mostenirea in continuarea denumirei clasei prin cuvantul "mosteneste" urmat de denumirile claselor parinte separate prin virgula.
     ```javascript
     clasa A { }
@@ -169,7 +170,7 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 clasa Entitate {
     id: id
 }
-// Proprietati:
+// Proprietati Entitate:
 // id: id
 
 
@@ -178,7 +179,7 @@ clasa Persoana mosteneste Entitate {
     nume: text
     prenume: text
 }
-// Proprietati:
+// Proprietati Persoana:
 // id: id
 // nume: text
 // prenume: text
@@ -188,7 +189,7 @@ clasa Persoana mosteneste Entitate {
 clasa Politist mosteneste Persoana {
     nrLegitimatie: text
 }
-// Proprietati:
+// Proprietati Politist:
 // id: id
 // nume: text
 // prenume: text
@@ -196,6 +197,18 @@ clasa Politist mosteneste Persoana {
 ```
 
 ## 1.3. Multimi
+- Multimile se noteaza adaugand 2 paranteze patrate in continuarea denumirii unui tip si reprezinta in sine un tip nou
+- Se pot realiza multimi de oricare din cele 3 tipuri principale:
+    1. Multimi de primitive
+    2. Multimi de tipuri complexe
+    3. Multimi de multimi
+- Multimile se considera a fi implicit neordonate
+- Exemple:
+    - **text**[] - reprezinta o multime de texte
+    - **real**[] - reprezinta o multime de numere reale
+    - **ActIdentitate**[] - reprezinta o multime de acte de identitate
+    - **Persoana**[] - reprezinta o multime de persoane
+    - **Persoana\[\]**[] - reprezinta o multime de multimi de persoane
 
 # 2. Variabile
 
