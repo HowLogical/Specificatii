@@ -415,7 +415,70 @@ fie masiniRecente: Masina[] = masini ordonata dupa dataFabricatie descrescator, 
 ```
 
 # 5. Parcurgere elemente multimi
-Putem parcurge elementele unei multimi folosind 
+Putem parcurge elementele unei multimi, unul cate unul, folosind sintaxa:
+```javascript
+pentru fiecare [denumireVariabilaElement] din [referintaMultime]:
+    //...instructiuni
+```
+Putem accesa si numarul elementului (indexul), folosind sintaxa:
+```javascript
+pentru fiecare [denumireVariabilaElement], index [denumireVariabilaIndex] din [referintaMultime]:
+    //...instructiuni
+```
+Indexul este o variabila de numar intreg iar primul element al unei multimi va avea indexul 0.
+
+**Exemple:**
+```javascript
+fie valori: intreg[] = [1, 2, 3, 4, 5]
+fie sumaNrPare: intreg = 0
+
+pentru fiecare x din valori:
+    daca x par
+        sumaNrPare = sumaNrPare + x
+
+//sumaNrPare = 2 + 4 = 6
+```
+```javascript
+clasa Adresa {
+    tipStrada: text
+    strada: text
+    numar: text
+}
+
+fie adrese: Adresa[] = [
+    {
+        tipStrada: "Aleea"
+        strada: "Alexandru"
+        numar: "101A"
+    },
+    {
+        tipStrada: "Strada"
+        strada: "Marin Preda"
+        numar: "201"
+    },
+    {
+        tipStrada: "Bulevardul"
+        strada: "Ferdinand"
+        numar: "12"
+    }
+]
+
+fie adreseOrdonate: Adresa[] = adrese ordonata dupa tipStrada crescator, strada crescator, numar crescator
+
+fie adresaLucrare: text = ""
+
+pentru fiecare adresa, index n din adreseOrdonate
+        adresaLucrare = adresaLucrare + (n + 1) ". " + adresa.tipStrada + " " + adresa.strada + " numarul " + adresa.numar
+
+        //Nu adauga un rand nou dupa ultima adresa
+        daca n < lungime(adreseOrdonate) - 1
+            adresaLucrare = adresaLucrare + RAND_NOU
+
+//variabila adresaLucrare va lua valoarea:
+//"1. Aleea Alexandru numarul 101A
+//2. Bulevardul Ferdinand numarul 12
+//3. Strada Marin Preda numarul 201"
+```
 
 # 6. Functii
 
