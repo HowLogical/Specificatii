@@ -75,16 +75,16 @@ Tipurile complexe de date (clasele) sunt folosite pentru a reprezenta obiecte ce
 ### 1.2.1. Reprezentare ca text
 Putem reprezenta o clasa sub forma de text in urmatorul mod:
 ```javascript
-clasa DenumireClasa {
-    denumireProprietate1: TipProprietate1
-    denumireProprietate2: TipProprietate2
+clasa [DenumireClasa] {
+    [denumireProprietate1]: [TipProprietate1]
+    [denumireProprietate2]: [TipProprietate2]
     ...
-    denumireProprietateN: TipProprietateN
+    [denumireProprietateN]: [TipProprietateN]
 }
 ```
 - Denumirea clasei este precedata de cuvantul "clasa".
 - Proprietatile clasei sunt delimitate de un set de acolade
-- O proprietate este scrisa sub forma `denumireProprietate: TipProprietate`
+- O proprietate este scrisa sub forma `[denumireProprietate]: [TipProprietate]`
 - Fiecare proprietate este scrisa pe un rand nou
 - Daca este necesar, se pot adauga comentarii si observatii daca sunt precedate de doua slash-uri (//)
 
@@ -116,13 +116,13 @@ clasa Persoana {
 ### 1.2.2. Reprezentare sub forma tabelara
 Putem reprezenta o clasa sub forma de tabel in urmatorul mod:  
 
-**DenumireClasa**  
+**[DenumireClasa]**  
 |Denumire|Tip|Observatii|
 |---|---|---|
-|denumireProprietate1|TipProprietate1|Observatie1|
-|denumireProprietate2|TipProprietate2|Observatie2|
+|[denumireProprietate1]|[TipProprietate1]|[Observatie1]|
+|[denumireProprietate2]|[TipProprietate2]|[Observatie2]|
 |...|...|...|
-|denumireProprietateN|TipProprietateN|ObservatieN|
+|[denumireProprietateN]|[TipProprietateN]|[ObservatieN]|
 
 **Exemple:**  
 
@@ -202,7 +202,7 @@ clasa Politist mosteneste Persoana {
     1. Multimi de primitive
     2. Multimi de tipuri complexe
     3. Multimi de multimi
-- Multimile se considera a fi implicit neordonate
+- Ordinea implicita a elementelor este ordinea inserarii in multime (primul element inserat este primul din lista)
 - Exemple de tipuri de multimi:
     - **text**[] - reprezinta o multime de texte
     - **real**[] - reprezinta o multime de numere reale
@@ -248,12 +248,12 @@ clasa Politist mosteneste Persoana {
 - Declaram variabilele prin cuvantul "fie".
 - Conventional putem declara o variabila folosind sintaxa
     ```javascript
-    fie denumireVariabila: TipVariabila = valoareInitiala
+    fie [denumireVariabila]: [TipVariabila] = [valoareInitiala]
     ```
 - Denumirea unei variabile va fi in format [camelCase](https://en.wikipedia.org/wiki/Camel_case) (prima litera mica).
 - Ulterior putem modifica valoarea variabilei folosind sintaxa
     ```javascript
-    denumireVariabila = valoare
+    [denumireVariabila] = [valoare]
     ```
 - Exemple:
     ```javascript
@@ -281,17 +281,34 @@ clasa Politist mosteneste Persoana {
     ```
 
      ```javascript
-    //Tipul ActIdentitate astfel cum a fost definit la punctul 1.2.1.
-    fie buletinReclamant: ActIdentitate = {
-        id: ""
+    clasa Telefon {
+        producator: text
+        model: text
+        serie: intreg
     }
 
-    buletinReclamant = null
+    fie telefonPrincipal: Telefon = {
+        producator: "Samsung"
+        model: "A13"
+        serie: 1005
+    }
+
+    fie telefonRezerva: Telefon = {
+        producator: "Apple"
+        model: "iPhone 11"
+        serie: 6001
+    }
+
+    fie telefoaneleMele: Telefon[] = [telefonPrincipal, telefonRezerva]
     ```
 
 # 3. Obiecte
 - Obiectele reprezinta valori concrete ale claselor.
-
+- Putem accesa valorile proprietatilor unui obiect folosind notatia
+```javascript
+[referintaObiect].[denumireProprietate]
+```
+- Exemplu:
 ```javascript
 //Fie `andra` un obiect de tip Persoana (conform definitiei de la 1.2.2).  
 fie andra: Persoana = {
@@ -300,21 +317,106 @@ fie andra: Persoana = {
     prenume: "Andra"
     acteIdentitate: [
         {
-            id: id
-            cnp: text
-            serie: text
-            nr: text //Numarul cartii de identitate
-            nume: text
-            prenume: text
-            dataEliberare: data
-            dataExpirare: data
+            id: "20bf705f-7e49-4b1b-aee1-335eb02e3164"
+            cnp: "6010308015164"
+            serie: "RK"
+            nr: "000123"
+            nume: "Stan"
+            prenume: "Andra"
+            dataEliberare: "2020-02-31"
+            dataExpirare: "2028-02-30"
+        },
+        {
+            id: "2de91a68-7ea9-4968-bc1b-f4e4266393a6"
+            cnp: "6010308015164"
+            serie: "RR"
+            nr: "000567"
+            nume: "Chirita" //Numele de dinainte de casatorie
+            prenume: "Andra"
+            dataEliberare: "2014-03-08"
+            dataExpirare: "2020-03-08"
         }
     ],
     mama: null
     tata: null
 }
+
+fie numeComplet: text = andra.nume + " " + andra.prenume
+//-> Valoarea variabilei numeComplet va fi "Stan Andra"
 ```
 
-# 4. Functii
+# 4. Ordonare multimi
+Daca dorim sa specificam ca o variabila ia valoarea unei multimi ordonate, putem folosi sintaxa:
+- Pentru multimi de valori primitive:
+    ```javascript
+    fie [denumireVariabila]: [TipVariabila][] = [[referintaMultime] | [valoareMultime]] ordonata ["crescator" | "descrescator"]
+    ```
+- Pentru multimi de obiecte:
+    ```javascript
+    fie [denumireVariabila]: [TipVariabila][] = [[referintaMultime] | [valoareMultime]] ordonata dupa [proprietate1] ["crescator" | "descrescator"], [proprietate2] ["crescator" | "descrescator"], ..., [proprietateN] ["crescator" | "descrescator"]
+    ```
+**Exemple**:
+```javascript
+fie ani: intreg[] = [2023, 2019, 2015, 2022]
+//-> ani = [2023, 2019, 2015, 2022]
+
+fie aniOrdonatiCrescator = ani ordonata crescator
+//-> aniOrdonatiCrescator = [2015, 2019, 2022, 2023]
+
+fie aniOrdonatiDescrescator = ani ordonata descrescator
+//-> aniOrdonatiDescrescator = [2023, 2022, 2019, 2015]
+
+fie nume: text[] = ["Bianca", "Ana", "Camelia"] ordonata descrescator
+//-> nume = ["Camelia", "Bianca", "Ana"]
+
+fie numeOrdonateCrescator: text[] = nume ordonata crescator
+//-> numeOrdonateCrescator = ["Ana", "Bianca", "Camelia"]
+```
+
+```javascript
+clasa Masina {
+    producator: text
+    dataFabricatie: data
+}
+
+fie masini: Masina[] = [
+    {
+        producator: "Ford"
+        dataFabricatie: "2020-01-01"
+    },
+    {
+        producator: "Dacia"
+        dataFabricatie: "2020-01-01"
+    },
+    {
+        producator: "Renault"
+        dataFabricatie: "2022-05-29"
+    }
+]
+
+fie masiniRecente: Masina[] = masini ordonata dupa dataFabricatie descrescator, producator crescator
+//-> masiniRecente = [
+// {
+//     producator: "Renault"
+//     dataFabricatie: "2022-05-29"
+// },
+// {
+//     producator: "Dacia"
+//     dataFabricatie: "2020-01-01"
+// },
+// {
+//     producator: "Ford"
+//     dataFabricatie: "2020-01-01"
+// }
+//]
+//
+// Primul element va fi masina produsa de Renault deoarece primul criteriu de ordonare este dataFabricatiei in ordine descrescatoare iar masina Renault este produsa intr-un an mai recent decat celelalte 2.
+// Masinile produse de Dacia respectiv Ford sunt produse in aceeasi data, asadar ordinea va fi determinata de al doilea criteriu de ordonare (denumirea producatorului in ordine crescatoare). Dacia va fi afisata inaintea lui Ford doarece D este inaintea lui F in alfabet.
+```
+
+# 5. Parcurgere elemente multimi
+Putem parcurge elementele unei multimi folosind 
+
+# 6. Functii
 
 ## 2.1. Functii de baza
