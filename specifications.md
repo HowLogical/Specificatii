@@ -725,3 +725,7 @@ rez = primaZiDin(data, "an") //-> rez = "2022-01-01"
 
 # 7. Module
 *TODO*
+
+# 8. Tipuri generice
+
+*TODO*
