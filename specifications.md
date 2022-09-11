@@ -116,7 +116,7 @@ clasa Persoana {
 ### 1.2.2. Reprezentare sub forma tabelara
 Putem reprezenta o clasa sub forma de tabel in urmatorul mod:  
 
-**[DenumireClasa]**  
+**\<DenumireClasa\>**  
 |Denumire|Tip|Observatii|
 |---|---|---|
 |\<denumireProprietate1\>|\<TipProprietate1\>|\<Observatie1\>|
@@ -508,5 +508,220 @@ pentru fiecare adresa, index n din adreseOrdonate
 ```
 
 # 6. Functii
+- Functiile ne ofera o metoda de a reprezenta un algoritm intr-un mod reutilizabil.
+- O functie este alcatuita din:
+    1. Denumirea functiei
+    2. 0 sau mai multi parametri
+    3. Tipul rezultatului
+    4. Algoritmul care prelucreaza parametrii si returneaza rezultatul
+- O functie are sintaxa:
+    ```javascript
+    functie <denumireFunctie>(<denumireParametru1>: [TipParametru1], ..., <denumireParametruN>: [TipParametruN]): <TipRezultat> {
+        //...algoritm
+    }
+    ```
+- O functie se apeleaza prin sintaxa:
+    ```javascript
+    <denumireFunctie>(<parametru1>, ..., <parametruN>)
+    ```
+- In cadrul algoritmului, se va folosi cuvantul `returneaza` pentru a indica valoarea returnata de functie.
+- Functia se opreste din executie in momentul parcurgerii instructiunii `returneaza`
+- Daca functia nu returneaza valori se poate omite tipul returnat si folosirea cuvantului `returneaza`
+- Pot exista mai multe functii cu aceeasi denumire dar cu parametri diferiti.
+- Nu pot exista mai multe functii cu aceeasi denumire dar cu tip rezultat diferit
+- Exemple:
+    ```javascript
+    functie patrat(x: intreg): intreg {
+        returneaza x * x
+    }
 
-## 2.1. Functii de baza
+    functie adunare(a: intreg, b: intreg): intreg {
+        returneaza a + b
+    }
+
+    fie rezultat: intreg = patrat(5) //-> rezultat = 25
+
+    //Compunere functii
+    rezultat = adunare(patrat(6), 2) //-> rezultat = 38
+    ```
+    ```javascript
+
+    functie filtrarePare(elemente: intreg[]): intreg[] {
+        fie rezultat: intreg[] = []
+
+        pentru fiecare element din elemente
+            daca element par
+                rezultat = rezultat + [element]
+
+        returneaza rezultat
+    }
+
+    fie numere: intreg[] = [1, 2, 3, 4, 5, 6]
+
+    fie pare: intreg[] = filtrarePare(numere)
+    //-> pare = [2, 4, 6]
+
+    ```
+
+## 6.1. Functii predefinite
+
+Pentru comoditate vom predefini urmatoarele functii utilizate comun:
+
+### 6.1.1. Functii generale
+In aceasta sectiune tipul `any` va reprezenta orice tip, indiferent de categoria sa.
+
+**lungime**
+```javascript
+lungime(multime: any[]): intreg {
+    returneaza numarul de elemente din multime
+}
+
+lungime(str: text): intreg {
+    returneaza numarul de caractere din str
+}
+
+//Exemple:
+fie l: intreg
+l = lungime([]) //l = 0
+l = lungime([5, 6, 1]) //l = 3
+l = lungime("Decebal, regele Daciei") //l = 22
+```
+
+### 6.1.2. Functii predefinite pentru numere
+
+**radical**
+```javascript
+radical(x: real): real {
+    returneaza radicalul lui x
+}
+
+radical(x: real, ordin: intreg): real {
+    returneaza radicalul de ordin n a lui x
+}
+
+//Exemple:
+fie rez: real
+rez = radical(25)           //rez = 5
+rez = radical(radical(49))  //rez = 2.6457513...
+rez = radical(64, 3)        //rez = 4
+```
+
+### 6.1.3. Functii predefinite pentru texte
+
+**ltrim, rtrim, trim**
+```javascript
+//Left trim
+ltrim(str: text): text {
+    returneaza textul 'str' fara spatii la inceput
+}
+
+//Right trim
+rtrim(str: text): text {
+    returneaza textul 'str' fara spatii la sfarist
+}
+
+//Trim
+trim(str: text): text {
+    //returneaza textul 'str' fara spatii la inceput si sfarist
+    returneaza ltrim(rtrim(str))
+}
+
+//Exemple:
+fie rez: text
+rez = ltrim("  Hey  ")      //-> rez = "Hey  "
+rez = rtrim("  Salut  ")    //-> rez = "  Salut"
+rez = trim("  Exemplu  ")   //-> rez = "Exemplu"
+```
+
+**char**
+```javascript
+char(str: text, pozitie: intreg): text {
+    returneaza caracterul de la pozitia <pozitie> din text
+}
+//Nota: primul caracter are pozitia 0
+
+fie rez: text
+rez = char("Analiza", 0)    //rez = "A"
+rez = char("Test", 2)       //rez = "s"
+```
+
+**substring**
+```javascript
+substring(str: text, pozitieStart: intreg, pozitieFinal: text): text {
+    returneaza textul din str incepand cu pozitieStart (inclusiv) pana la pozitieFinal (exclusiv)
+}
+
+substring(str: text, pozitieStart: intreg): text {
+    //returneaza textul din str incepand cu pozitieStart (inclusiv) pana la final
+    returneaza substring(text, pozitieStart, lungime(text))
+}
+
+fie rez: text
+rez = substring("aroma", 1) //-> rez = "roma"
+rez = substring("Analizare", 3, 7) //-> rez = "liza"
+```
+
+**replaceText**
+```javascript
+replaceText(txt: text, textCautat: text, textulNou: text): text {
+    returneaza un nou text in care fiecare aparitie a lui <textCautat> din txt este inlocuita cu <textulNou>
+}
+
+fie rez: text
+rez = replaceText("mere prune nectarine", " ", ",") //-> rez = "mere,prune,nectarine"
+```
+
+### 6.1.4. Functii predefinite pentru date
+
+**zi, luna, an**
+```javascript
+zi(data: data): intreg {
+    returneaza numarul zilei din luna pentru parametrul data
+}
+
+luna(data: data): intreg {
+    returneaza numarul lunii din an pentru parametrul data
+}
+
+anul(data: data): intreg {
+    returneaza anul parametrului data
+}
+
+fie data: data = "2022-09-30"
+fie rez: intreg
+rez = zi(data)      //-> rez = 30
+rez = luna(data)    //-> rez = 9
+rez = an(data)      //-> rez = 2022
+```
+
+**ultimaZiDin, primaZiDin**
+```javascript
+ultimaZiDin(data: data, din: text): data {
+    daca din = "luna"
+        returneaza ultima zi a lunii in care se incadreaza parametrul data
+    daca din = "an"
+        returneaza ultima zi a anului in care se incadreaza parametrul data
+}
+
+fie data: data = "2022-09-15"
+
+fie rez: data = ultimaZiDin(data, "luna") //-> rez = "2022-09-31"
+rez = ultimaZiDin(data, "an") //-> rez = "2022-12-31"
+```
+```javascript
+primaZiDin(data: data, din: text): data {
+    daca din = "luna"
+        returneaza prima zi a lunii in care se incadreaza parametrul data
+    daca din = "an"
+        returneaza prima zi a anului in care se incadreaza parametrul data
+}
+
+fie data: data = "2022-09-17"
+
+fie rez: data = primaZiDin(data, "luna") //-> rez = "2022-09-01"
+rez = primaZiDin(data, "an") //-> rez = "2022-01-01"
+```
+
+
+# 7. Module
+*TODO*
