@@ -75,11 +75,11 @@ Tipurile complexe de date (clasele) sunt folosite pentru a reprezenta obiecte ce
 ### 1.2.1. Reprezentare ca text
 Putem reprezenta o clasa sub forma de text in urmatorul mod:
 ```javascript
-clasa [DenumireClasa] {
-    [denumireProprietate1]: [TipProprietate1]
-    [denumireProprietate2]: [TipProprietate2]
+clasa <DenumireClasa> {
+    <denumireProprietate1>: <TipProprietate1>
+    <denumireProprietate2>: <TipProprietate2>
     ...
-    [denumireProprietateN]: [TipProprietateN]
+    <denumireProprietateN>: <TipProprietateN>
 }
 ```
 - Denumirea clasei este precedata de cuvantul "clasa".
@@ -210,6 +210,11 @@ clasa Politist mosteneste Persoana {
     - **Persoana**[] - reprezinta o multime de persoane
     - **Persoana\[\]**[] - reprezinta o multime de multimi de persoane
 - Valorile concrete ale unei multimi vor fi ilustrate in paranteze patrate (de exemplu in cazul variabilelor)
+- Elementul unei multimi de la o pozitie (index) `i` se poate accesa prin sintaxa:
+    ```javascript
+    <referintaMultime>[i]
+    ```
+    Nota: primul element din multime va avea indexul `0` iar ultimul element va avea indexul `n - 1`, unde `n` este numarul total de elemente din multime.
 - Exemple de valori de multimi:
     ```javascript
     [1, 2, 3, 4]     //-> Multime de tip intreg[]
@@ -221,6 +226,25 @@ clasa Politist mosteneste Persoana {
         [0, 0, 1]
     ]   //-> Multime de tip intreg[][] (matrice)
     ```
+- Exemple de accesare si modificare de elemente:
+    ```javascript
+    fie ani: intreg[] = [2020, 2021, 2022]
+    fie primulElement: intreg = ani[0] //-> primulElement = 2020
+    fie ultimulElement: intreg = ani[2] //-> ultimulElement = 2022
+
+    //Acesare element in functie de index variabil:
+    fie index: intreg = 1
+    fie element: intreg = ani[index] //-> element = 2021
+    
+    index = index + 1
+    element = ani[index] //-> element = 2022
+
+    //Modificare element:
+    ani[index] = 2025 //-> ani = [2020, 2021, 2022]
+    element = ani[index] //-> element = 2025
+    ```
+    *Nota: A se vedea capitolul `2. Variabile` pentru explicatii referitoare la sintaxa folosita mai sus*
+
 
 ## 1.4. Valoarea null
 - Implicit orice tip din cele 3 categorii principale poate lua valoarea **null**.
@@ -470,7 +494,7 @@ fie adresaLucrare: text = ""
 pentru fiecare adresa, index n din adreseOrdonate
         adresaLucrare = adresaLucrare + (n + 1) ". " + adresa.tipStrada + " " + adresa.strada + " numarul " + adresa.numar
 
-        //Nu adauga un rand nou dupa ultima adresa
+        //Adauga un rand nou doar daca nu suntem pe ultimul element
         daca n < lungime(adreseOrdonate) - 1
             adresaLucrare = adresaLucrare + RAND_NOU
 
