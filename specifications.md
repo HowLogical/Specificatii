@@ -68,7 +68,7 @@ Tipurile complexe de date (clasele) sunt folosite pentru a reprezenta obiecte ce
     1. Denumirea proprietatii
     2. Tipul proprietatii (poate fi oricare din cele 3 categorii de tipuri de date)
 - Denumirea unei proprietati este unica in clasa. De exemplu o clasa de tip Persoana nu poate avea o proprietate cu denumirea "varsta" de tip string si alta proprietate tot cu denumirea "varsta" dar de tip intreg.
-- Denumirea clasei sau a unei proprietati va putea contine doar litere si cifre (fara spatii sau alte caractere speciale). De asemenea, primul caracter este obligatoriu o litera.
+- Denumirea clasei sau a unei proprietati va putea contine doar litere, cifre si underscore-uri (fara spatii sau alte caractere speciale). De asemenea, primul caracter este obligatoriu o litera.
 - Denumirea clasei va fi in format [PascalCase](https://wiki.c2.com/?PascalCase) (prima litera mare).
 - Denumirea unei proprietati va fi in format [camelCase](https://en.wikipedia.org/wiki/Camel_case) (prima litera mica).
 
