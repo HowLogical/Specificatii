@@ -84,7 +84,7 @@ clasa <DenumireClasa> {
 ```
 - Denumirea clasei este precedata de cuvantul "clasa".
 - Proprietatile clasei sunt delimitate de un set de acolade
-- O proprietate este scrisa sub forma `[denumireProprietate]: [TipProprietate]`
+- O proprietate este scrisa sub forma `<denumireProprietate>: <TipProprietate>`
 - Fiecare proprietate este scrisa pe un rand nou
 - Daca este necesar, se pot adauga comentarii si observatii daca sunt precedate de doua slash-uri (//)
 
@@ -119,10 +119,10 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 **[DenumireClasa]**  
 |Denumire|Tip|Observatii|
 |---|---|---|
-|[denumireProprietate1]|[TipProprietate1]|[Observatie1]|
-|[denumireProprietate2]|[TipProprietate2]|[Observatie2]|
+|\<denumireProprietate1\>|\<TipProprietate1\>|\<Observatie1\>|
+|\<denumireProprietate2\>|\<TipProprietate2\>|\<Observatie2\>|
 |...|...|...|
-|[denumireProprietateN]|[TipProprietateN]|[ObservatieN]|
+|\<denumireProprietateN\>|\<TipProprietateN\>|\<ObservatieN\>|
 
 **Exemple:**  
 
@@ -238,6 +238,9 @@ clasa Politist mosteneste Persoana {
     
     index = index + 1
     element = ani[index] //-> element = 2022
+
+    //Accesare element prin limbaj liber
+    element = primul element din multimea ani > 2020 //-> element = 2021
 
     //Modificare element:
     ani[index] = 2025 //-> ani = [2020, 2021, 2022]
@@ -441,12 +444,12 @@ fie masiniRecente: Masina[] = masini ordonata dupa dataFabricatie descrescator, 
 # 5. Parcurgere elemente multimi
 Putem parcurge elementele unei multimi, unul cate unul, folosind sintaxa:
 ```javascript
-pentru fiecare [denumireVariabilaElement] din [referintaMultime]:
+pentru fiecare <denumireVariabilaElement> din <referintaMultime>:
     //...instructiuni
 ```
 Putem accesa si numarul elementului (indexul), folosind sintaxa:
 ```javascript
-pentru fiecare [denumireVariabilaElement], index [denumireVariabilaIndex] din [referintaMultime]:
+pentru fiecare <denumireVariabilaElement>, index <denumireVariabilaIndex> din <referintaMultime>:
     //...instructiuni
 ```
 Indexul este o variabila de numar intreg iar primul element al unei multimi va avea indexul 0.
