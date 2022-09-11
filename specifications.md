@@ -376,11 +376,11 @@ fie numeComplet: text = andra.nume + " " + andra.prenume
 Daca dorim sa specificam ca o variabila ia valoarea unei multimi ordonate, putem folosi sintaxa:
 - Pentru multimi de valori primitive:
     ```javascript
-    fie [denumireVariabila]: [TipVariabila][] = [[referintaMultime] | [valoareMultime]] ordonata ["crescator" | "descrescator"]
+    fie <denumireVariabila>: <TipVariabila>[] = <<referintaMultime> | <valoareMultime>> ordonata <"crescator" | "descrescator">
     ```
 - Pentru multimi de obiecte:
     ```javascript
-    fie [denumireVariabila]: [TipVariabila][] = [[referintaMultime] | [valoareMultime]] ordonata dupa [proprietate1] ["crescator" | "descrescator"], [proprietate2] ["crescator" | "descrescator"], ..., [proprietateN] ["crescator" | "descrescator"]
+    fie <denumireVariabila>: <TipVariabila>[] = <<referintaMultime> | <valoareMultime>> ordonata dupa <proprietate1> <"crescator" | "descrescator">, <proprietate2> <"crescator" | "descrescator">, ..., <proprietateN> <"crescator" | "descrescator">
     ```
 **Exemple**:
 ```javascript
