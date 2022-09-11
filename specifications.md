@@ -333,7 +333,7 @@ clasa Politist mosteneste Persoana {
 - Obiectele reprezinta valori concrete ale claselor.
 - Putem accesa valorile proprietatilor unui obiect folosind notatia
 ```javascript
-[referintaObiect].[denumireProprietate]
+<referintaObiect>.<denumireProprietate>
 ```
 - Exemplu:
 ```javascript
