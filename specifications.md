@@ -516,7 +516,7 @@ pentru fiecare adresa, index n din adreseOrdonate
     4. Algoritmul care prelucreaza parametrii si returneaza rezultatul
 - O functie are sintaxa:
     ```javascript
-    functie <denumireFunctie>(<denumireParametru1>: [TipParametru1], ..., <denumireParametruN>: [TipParametruN]): <TipRezultat> {
+    functie <denumireFunctie>(<denumireParametru1>: <TipParametru1>, ..., <denumireParametruN>: <TipParametruN>): <TipRezultat> {
         //...algoritm
     }
     ```
