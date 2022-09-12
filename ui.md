@@ -123,6 +123,10 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 # 2. Controale
 
 ## 2.1. TextBox
+Camp de baza de introducere de texte scurte.
+
+![TextBox](./images/ui/TextBox_01.png)
+
 **TextBox** mosteneste **FormControl**
 <table>
     <tr>
@@ -146,6 +150,10 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 </table>
 
 ## 2.2. LargeTextBox
+Camp de baza de introducere de texte mari, care se pot intinde pe mai multe randuri.
+
+![LargeTextBox](./images/ui/LargeTextBox_01.png)
+
 **LargeTextBox** mosteneste **FormControl**
 <table>
     <tr>
@@ -175,6 +183,10 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 </table>
 
 ## 2.3. PasswordBox
+Camp de introducere parole. Valorile tastate vor fi afisate mascat.
+
+![PasswordBox](./images/ui/PasswordBox_01.png)
+
 **PasswordBox** mosteneste **TextBox**
 <table>
     <tr>
@@ -186,6 +198,10 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 </table>
 
 ## 2.4. NumberInput
+Camp de introducere valori numerice.
+
+![NumberInput](./images/ui/NumberInput_01.png)
+
 **NumberInput** mosteneste **FormControl**
 <table>
     <tr>
@@ -227,7 +243,11 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 </table>
 
 ## 2.5. CheckBox
-**PasswordBox** mosteneste **FormControl**
+Camp de bifa.
+
+![CheckBox](./images/ui/CheckBox_01.png)
+
+**CheckBox** mosteneste **FormControl**
 <table>
     <tr>
         <th>Denumire</th>
@@ -245,6 +265,8 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 
 ## 2.6. Radio
 Control cu bifare multipla in care o singura optiune poate fi aleasa la oricare moment dat.
+
+![Radio](./images/ui/Radio_01.png)
 
 **Radio** mosteneste **FormControl**
 <table>
@@ -291,6 +313,10 @@ Control cu bifare multipla in care o singura optiune poate fi aleasa la oricare 
 </table>
 
 ## 2.7. DatePicker
+Camp de selectie / tastare date calendaristice.
+
+![DatePicker](./images/ui/DatePicker_01.png)
+
 **DatePicker** mosteneste **FormControl**
 <table>
     <tr>
@@ -314,6 +340,9 @@ Control cu bifare multipla in care o singura optiune poate fi aleasa la oricare 
 </table>
 
 ## 2.8. Select
+Camp de tip lista de selectie.
+
+![Select](./images/ui/Select_01.png)
 
 **Select** mosteneste **FormControl**
 <table>
@@ -366,5 +395,76 @@ Control cu bifare multipla in care o singura optiune poate fi aleasa la oricare 
 </table>
 
 ## 2.9. Slider
+Camp de tip slider. Valoarea selectata este de tip real.
+
+![Slider](./images/ui/Slider_01.png)
+
+**Slider** mosteneste **FormControl**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>real!</td>
+        <td>Valoarea selectata.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>min</td>
+        <td>real!</td>
+        <td>Valoarea minima ce poate fi selectata.</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>max</td>
+        <td>real!</td>
+        <td>Valoarea maxima ce poate fi selectata.</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>step</td>
+        <td>real!</td>
+        <td>Pasul cu care se incrementeaza/decrementeaza valoarea campului atunci cand se trage de slider. Valoarea trebuie sa fie > 0 si sa fie divizibila cu (max - min).</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>vertical</td>
+        <td>boolean!</td>
+        <td>Daca este true, slider-ul va fi orientat vertical. Altfel va fi orientat orizontal.</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>options</td>
+        <td>SliderOption[]</td>
+        <td>Label-urile care vor fi afisate pentru fiecare pas, daca este cazul.</td>
+        <td>null</td>
+    </tr>
+</table>
+
+**SliderOption**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>real!</td>
+        <td>Valoarea din slider sub care va fi afisat label-ul</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>label</td>
+        <td>text!</td>
+        <td>Eticheta de sub pas.</td>
+        <td></td>
+    </tr>
+</table>
 
 # 3. Table

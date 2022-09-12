@@ -1,2 +1,3 @@
-# Limbaj specificatii
-[Limbaj specificatii](specifications.md)
+# Specificatii
+[Limbaj specificatii](specifications.md)  
+[Interfata si controale](ui.md)
