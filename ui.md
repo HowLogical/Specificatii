@@ -541,6 +541,12 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
         <th>Observatii</th>
         <th>Valoare implicita</th>
     </tr>
+    <tr>
+        <td>title</td>
+        <td>text</td>
+        <td>Titlul ferestrei, daca este cazul.</td>
+        <td>null</td>
+    </tr>
 </table>
 
 # 4. Table
