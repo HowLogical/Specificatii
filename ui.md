@@ -432,7 +432,15 @@ Camp de tip slider. Valoarea selectata este de tip real.
     </tr>
 </table>
 
-**SliderOption**
+## 2.10. Button
+Buton. La apasarea sa se va rula functia specificata pe proprietatea onClick.
+
+![Button](./images/ui/Button_01.png)
+![Button](./images/ui/Button_02.png)
+![Button](./images/ui/Button_03.png)
+![Button](./images/ui/Button_04.png)
+
+**Button** mosteneste **Control**
 <table>
     <tr>
         <th>Denumire</th>
@@ -441,18 +449,43 @@ Camp de tip slider. Valoarea selectata este de tip real.
         <th>Valoare implicita</th>
     </tr>
     <tr>
-        <td>value</td>
-        <td>real!</td>
-        <td>Valoarea din slider sub care va fi afisat label-ul</td>
-        <td></td>
+        <td>label</td>
+        <td>text</td>
+        <td>Textul afisat pe buton, daca este cazul.</td>
+        <td>null</td>
     </tr>
     <tr>
-        <td>label</td>
-        <td>text!</td>
-        <td>Eticheta de sub pas.</td>
-        <td></td>
+        <td>onClick</td>
+        <td>Function</td>
+        <td>Functia declansata la apasarea butonului.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>shape</td>
+        <td>text</td>
+        <td>Defineste forma butonului. Valori posibile: "default" | "circle" | "round".</td>
+        <td>"default"</td>
+    </tr>
+    <tr>
+        <td>type</td>
+        <td>text</td>
+        <td>Defineste stilul butonului. Valori posibile: "default" | "ghost" | "dashed" | "link" | "text".</td>
+        <td>"default"</td>
+    </tr>
+    <tr>
+        <td>danger</td>
+        <td>boolean!</td>
+        <td>Marcheaza un buton ce trebuie apasat cu atentie. Daca este true, butonul va fi colorat rosu.</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>icon</td>
+        <td>text</td>
+        <td>Defineste iconita butonului, daca e cazul.</td>
+        <td>null</td>
     </tr>
 </table>
+
 
 # 3. Elemente de afisare
 
