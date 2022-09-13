@@ -107,19 +107,6 @@ Clasa de baza pe care o mostenesc controalele din machete (Form-uri).
     </tr>
 </table>
 
-## 1.6. Modal
-Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`.
-
-**Modal** mosteneste **UIElement**
-<table>
-    <tr>
-        <th>Denumire</th>
-        <th>Tip</th>
-        <th>Observatii</th>
-        <th>Valoare implicita</th>
-    </tr>
-</table>
-
 # 2. Controale
 
 ## 2.1. TextBox
@@ -467,4 +454,60 @@ Camp de tip slider. Valoarea selectata este de tip real.
     </tr>
 </table>
 
-# 3. Table
+# 3. Elemente de afisare
+
+## 3.1. Label
+Camp de afisare de texte.
+
+![Label](./images/ui/Label_01.png)
+
+**Label** mosteneste **UIElement**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>label</td>
+        <td>text</td>
+        <td>Valoarea afisata.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bold</td>
+        <td>boolean!</td>
+        <td>Label-ul este bold-uit</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>italic</td>
+        <td>boolean!</td>
+        <td>Label-ul este in format italic</td>
+        <td>false</td>
+    </tr>
+    <tr>
+        <td>underline</td>
+        <td>boolean!</td>
+        <td>Label-ul este subliniat</td>
+        <td>false</td>
+    </tr>
+</table>
+
+## 3.2. Modal
+Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`.
+
+![Modal](./images/ui/Modal_01.png)
+
+**Modal** mosteneste **UIElement**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+</table>
+
+# 4. Table
