@@ -533,7 +533,7 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 
 ![Modal](./images/ui/Modal_01.png)
 
-**Modal** mosteneste **UIElement**
+**Modal**\<TipItem\> mosteneste **UIElement**
 <table>
     <tr>
         <th>Denumire</th>
@@ -545,6 +545,12 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
         <td>title</td>
         <td>text</td>
         <td>Titlul ferestrei, daca este cazul.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>item</td>
+        <td>TipItem</td>
+        <td>Obiectul incarcat in fereastra.</td>
         <td>null</td>
     </tr>
 </table>
