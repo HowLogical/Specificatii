@@ -744,6 +744,8 @@ Putem declara o tabela sub forma tabelara simplificata astfel:
 
 ## 4.1. Exemplu
 
+![Table](./images/ui/Table_01.png)
+
 **Sesizare**
 |Proprietate|Tip|Observatii|
 |---|---|---|
@@ -797,8 +799,9 @@ fie buton: Button = butonul din rand
 fie rand: Sesizare = randul curent
 &nbsp;
 buton.label = "Editează"
+buton.type = "primary"
 &nbsp;
-daca rand.stare = "finalizat"
+daca rand.stare = "Finalizat"
     buton.disabled = true
 &nbsp;
 la apasarea butonului se deschide sesizarea cu id = rand.id
@@ -817,13 +820,19 @@ la apasarea butonului se deschide sesizarea cu id = rand.id
     </tr>
     <tr>
         <td>nrDocument</td>
-        <td>Număr document</td>
+        <td>Număr</td>
         <td>Label</td>
         <td></td>
     </tr>
     <tr>
         <td>dataDocument</td>
-        <td>Dată document</td>
+        <td>Dată</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>stare</td>
+        <td>Stare</td>
         <td>Label</td>
         <td></td>
     </tr>
