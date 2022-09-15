@@ -117,7 +117,7 @@ clasa Persoana {
 Putem reprezenta o clasa sub forma de tabel in urmatorul mod:  
 
 **\<DenumireClasa\>**  
-|Denumire|Tip|Observatii|
+|Proprietate|Tip|Observatii|
 |---|---|---|
 |\<denumireProprietate1\>|\<TipProprietate1\>|\<Observatie1\>|
 |\<denumireProprietate2\>|\<TipProprietate2\>|\<Observatie2\>|
@@ -127,7 +127,7 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 **Exemple:**  
 
 **ActIdentitate**  
-|Denumire|Tip|Observatii|
+|Proprietate|Tip|Observatii|
 |---|---|---|
 |id|id||
 |cnp|text||
@@ -139,7 +139,7 @@ Putem reprezenta o clasa sub forma de tabel in urmatorul mod:
 |dataExpirare|data||
 
 **Persoana**
-|Denumire|Tip|Observatii|
+|Proprietate|Tip|Observatii|
 |---|---|---|
 |id|id||
 |nume|text||
@@ -330,47 +330,130 @@ clasa Politist mosteneste Persoana {
     ```
 
 # 3. Obiecte
-- Obiectele reprezinta valori concrete ale claselor.
-- Putem accesa valorile proprietatilor unui obiect folosind notatia
-```javascript
-<referintaObiect>.<denumireProprietate>
-```
-- Exemplu:
-```javascript
-//Fie `andra` un obiect de tip Persoana (conform definitiei de la 1.2.2).  
-fie andra: Persoana = {
-    id: "0b809da0-5933-4785-be89-8e3e6d5e9abd",
-    nume: "Stan"
-    prenume: "Andra"
-    acteIdentitate: [
-        {
-            id: "20bf705f-7e49-4b1b-aee1-335eb02e3164"
-            cnp: "6010308015164"
-            serie: "RK"
-            nr: "000123"
-            nume: "Stan"
-            prenume: "Andra"
-            dataEliberare: "2020-02-31"
-            dataExpirare: "2028-02-30"
+- Un obiect poate fi declarat prin sintaxa
+    ```javascript
+    (<TipObiect>) {
+        <denumireProprietate1>: <valoare1>
+        <denumireProprietate2>: <valoare2>
+        ...
+        <denumireProprietateN>: <valoareN>
+    }
+    ```
+- Obiectele reprezinta valori concrete ale claselor. Echivalent, clasele reprezinta template-uri dupa care sunt create obiectele. De exemplu, daca avem o clasa numita Masina:
+    ```javascript
+    clasa Masina {
+        marca: text
+        model: text
+        culoare: text
+    }
+    ```
+    Exemple de obiecte de tipul Masina ar putea fi:  
+
+    ```javascript
+    fie fordFocusNegru: Masina = (Masina) {
+        marca: "Ford"
+        model: "Focus"
+        culoare: "negru"
+    }
+
+    fie fordFocusRosu: Masina = (Masina) {
+        marca: "Ford"
+        model: "Focus"
+        culoare: "rosu"
+    }
+
+    //Daca nu se specifica tipul inainte de declararea obiectului, se considera a fi tipul de baza al variabilei, multimii sau proprietatii
+    fie daciaLoganAlbastra: Masina = {
+        marca: "Dacia"
+        model: "Logan"
+        culoare: "albastru"
+    }
+    ```
+- Putem reprezenta un obiect si sub forma tabelara astfel:  
+  
+    **fie** daciaLoganAlbastra: **Masina**
+    |Proprietate|Valoare|Observatii|
+    |---|---|---|
+    |marca|"Dacia"||
+    |model|"Logan"||
+    |culoare|"albastru"||
+
+- Daca nu se specifica tipul inainte de declararea obiectului, se considera a fi tipul de baza al variabilei, multimii sau proprietatii. In cazul in care tipul obiectului este o subclasa a tipului de baza, trebuie specificat obligatoriu. De exemplu:
+    ```javascript
+    clasa Excavator mosteneste Masina {
+        volumCupa: real
+    }
+
+    clasa Tanc mosteneste Masina {
+        calibruTunCm: real
+    }
+
+    fie vehicule: Masina[] = {
+        (Tanc) {
+            marca: "Krupp"
+            model: "Panzer IV"
+            culoare: "gri"
+            calibruTunCm: 7.5
+        },
+        (Excavator) {
+            marca: "Komatsu"
+            model: " PC170LC-10"
+            culoare: "gablen"
+            volumCupa: 110.75
+        },
+        (Tanc) {
+            marca: "Vauxhall Motors"
+            model: "Churchill Mark V"
+            culoare: "crem"
+            calibruTunCm: 9.5
         },
         {
-            id: "2de91a68-7ea9-4968-bc1b-f4e4266393a6"
-            cnp: "6010308015164"
-            serie: "RR"
-            nr: "000567"
-            nume: "Chirita" //Numele de dinainte de casatorie
-            prenume: "Andra"
-            dataEliberare: "2014-03-08"
-            dataExpirare: "2020-03-08"
-        }
-    ],
-    mama: null
-    tata: null
-}
+            marca: "Dacia"
+            model: "Logan"
+            culoare: "albastru"
+        },
+    }
+    ```
+- Putem accesa valorile proprietatilor unui obiect folosind notatia
+    ```javascript
+    <referintaObiect>.<denumireProprietate>
+    ```
+- Exemplu:
+    ```javascript
+    //Fie `andra` un obiect de tip Persoana (conform definitiei de la 1.2.2).  
+    fie andra: Persoana = (Persoana) {
+        id: "0b809da0-5933-4785-be89-8e3e6d5e9abd",
+        nume: "Stan"
+        prenume: "Andra"
+        acteIdentitate: [
+            (ActIdentitate) {
+                id: "20bf705f-7e49-4b1b-aee1-335eb02e3164"
+                cnp: "6010308015164"
+                serie: "RK"
+                nr: "000123"
+                nume: "Stan"
+                prenume: "Andra"
+                dataEliberare: "2020-02-31"
+                dataExpirare: "2028-02-30"
+            },
+            (ActIdentitate) {
+                id: "2de91a68-7ea9-4968-bc1b-f4e4266393a6"
+                cnp: "6010308015164"
+                serie: "RR"
+                nr: "000567"
+                nume: "Chirita" //Numele de dinainte de casatorie
+                prenume: "Andra"
+                dataEliberare: "2014-03-08"
+                dataExpirare: "2020-03-08"
+            }
+        ],
+        mama: null
+        tata: null
+    }
 
-fie numeComplet: text = andra.nume + " " + andra.prenume
-//-> Valoarea variabilei numeComplet va fi "Stan Andra"
-```
+    fie numeComplet: text = andra.nume + " " + andra.prenume
+    //-> Valoarea variabilei numeComplet va fi "Stan Andra"
+    ```
 
 # 4. Ordonare multimi
 Daca dorim sa specificam ca o variabila ia valoarea unei multimi ordonate, putem folosi sintaxa:
