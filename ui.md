@@ -608,7 +608,7 @@ Element de afisare date si controale sub forma tabelara.
     </tr>
     <tr>
         <td>value</td>
-        <td>functie (row: any, index: intreg): UIElement</td>
+        <td>functie (row: TipRand, index: intreg): UIElement</td>
         <td>Functie ce determina elementul de interfata afisat in celula randului cu indexul `index`.</td>
         <td>null</td>
     </tr>
