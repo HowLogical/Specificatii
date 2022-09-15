@@ -469,7 +469,7 @@ Buton. La apasarea sa se va rula functia specificata pe proprietatea onClick.
     <tr>
         <td>type</td>
         <td>text</td>
-        <td>Defineste stilul butonului. Valori posibile: "default" | "ghost" | "dashed" | "link" | "text".</td>
+        <td>Defineste stilul butonului. Valori posibile: "default" | "primary" | "ghost" | "dashed" | "link" | "text".</td>
         <td>"default"</td>
     </tr>
     <tr>
