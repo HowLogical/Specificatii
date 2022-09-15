@@ -107,9 +107,6 @@ Clasa de baza pe care o mostenesc controalele din machete (Form-uri).
     </tr>
 </table>
 
-# 1.X. Elemente functionale
-//TODO
-
 # 2. Controale
 
 ## 2.1. TextBox
@@ -581,6 +578,12 @@ Element de afisare date si controale sub forma tabelara.
         <td>Elementele setului de date din tabel.</td>
         <td></td>
     </tr>
+    <tr>
+        <td>pagination</td>
+        <td>boolean!</td>
+        <td>Daca este true, tabelul are paginare.</td>
+        <td>true</td>
+    </tr>
 </table>
 
 **TableColumn** mosteneste **UIElement**
@@ -605,9 +608,15 @@ Element de afisare date si controale sub forma tabelara.
     </tr>
     <tr>
         <td>value</td>
-        <td>functie (row: any, index: intreg): (UIElement | text)</td>
-        <td>Valoarea randului cu indexul `index`. Poate fi un control sau un text simplu.</td>
+        <td>functie (row: any, index: intreg): UIElement</td>
+        <td>Functie ce determina elementul de interfata afisat in celula randului cu indexul `index`.</td>
         <td>null</td>
+    </tr>
+    <tr>
+        <td>align</td>
+        <td>text</td>
+        <td>Alinierea elementelor din coloane. Valori posibile: "left" | "right" | "center".</td>
+        <td>"left"</td>
     </tr>
 </table>
 
@@ -727,7 +736,7 @@ Putem declara o tabela sub forma tabelara simplificata astfel:
     </tr>
 </table>
 
-**Exemplu:**
+## 4.1. Exemplu
 
 **Sesizare**
 |Proprietate|Tip|Observatii|
@@ -777,17 +786,17 @@ Putem declara o tabela sub forma tabelara simplificata astfel:
         <td></td>
         <td>Button</td>
         <td>
-<pre>
+            <pre>
 fie buton: Button = butonul din rand
 fie rand: Sesizare = randul curent
-
+&nbsp;
 buton.label = "Editează"
-
+&nbsp;
 daca rand.stare = "finalizat"
     buton.disabled = true
-
+&nbsp;
 la apasarea butonului se deschide sesizarea cu id = rand.id
-</pre>
+            </pre>
         </td>
     </tr>
 </table>
@@ -813,3 +822,6 @@ la apasarea butonului se deschide sesizarea cu id = rand.id
         <td></td>
     </tr>
 </table>
+
+# 5. Elemente functionale
+//TODO
