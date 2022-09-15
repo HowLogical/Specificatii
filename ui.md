@@ -107,6 +107,9 @@ Clasa de baza pe care o mostenesc controalele din machete (Form-uri).
     </tr>
 </table>
 
+# 1.X. Elemente functionale
+//TODO
+
 # 2. Controale
 
 ## 2.1. TextBox
@@ -550,3 +553,263 @@ Ferestre pop-up. Afisarea / ascunderea se controleaza prin proprietatea `hidden`
 </table>
 
 # 4. Table
+Element de afisare date si controale sub forma tabelara.
+
+**Table**\<TipRand\> mosteneste **UIElement**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>text</td>
+        <td>Titlul tabelului, daca este cazul.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>columns</td>
+        <td>(TableColumn | TableColumnGroup)[]</td>
+        <td>Coloanele tabelului.</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>rows</td>
+        <td>TipRand[]</td>
+        <td>Elementele setului de date din tabel.</td>
+        <td></td>
+    </tr>
+</table>
+
+**TableColumn** mosteneste **UIElement**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>text</td>
+        <td>Titlul coloanei, daca este cazul.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>name</td>
+        <td>text</td>
+        <td>Denumirea proprietatii din rand pentru mapare automata.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>value</td>
+        <td>functie (row: any, index: intreg): (UIElement | text)</td>
+        <td>Valoarea randului cu indexul `index`. Poate fi un control sau un text simplu.</td>
+        <td>null</td>
+    </tr>
+</table>
+
+**TableColumnGroup** mosteneste **UIElement**
+<table>
+    <tr>
+        <th>Denumire</th>
+        <th>Tip</th>
+        <th>Observatii</th>
+        <th>Valoare implicita</th>
+    </tr>
+    <tr>
+        <td>title</td>
+        <td>text</td>
+        <td>Titlul grupului de coloane, daca este cazul.</td>
+        <td>null</td>
+    </tr>
+    <tr>
+        <td>columns</td>
+        <td>(TableColumn | TableColumnGroup)[]</td>
+        <td>Coloanele subordonate grupului.</td>
+        <td></td>
+    </tr>
+</table>
+
+Putem declara o tabela sub forma tabelara simplificata astfel:
+
+**\<DenumireTipTabela\>** mosteneste **Table**\<\<TipRand\>\>
+<table>
+    <tr>
+        <th>Proprietate</th>
+        <th>Titlu</th>
+        <th>Tip control</th>
+        <th>Observatii</th>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoana1&gt</td>
+        <td>&ltTitlu Coloana 1&gt</td>
+        <td>&lttipControl1&gt</td>
+        <td>&ltobservatiiColoana1&gt</td>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoana2&gt</td>
+        <td>&ltTitlu Coloana 2&gt</td>
+        <td>&lttipControl2&gt</td>
+        <td>&ltobservatiiColoana2&gt</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>&ltTitlu grupare coloane K&gt</td>
+        <td>&ltTipGrupareColoaneK&gt</td>
+        <td>&ltobservatiiGrupareColoaneK&gt</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoanaN&gt</td>
+        <td>&ltTitlu Coloana N&gt</td>
+        <td>&lttipControlN&gt</td>
+        <td>&ltobservatiiColoanaN&gt</td>
+    </tr>
+</table>
+
+**\<DenumireTipGrupareColoane\>** mosteneste **TableColumnGroup**
+<table>
+    <tr>
+        <th>Proprietate</th>
+        <th>Titlu</th>
+        <th>Tip control</th>
+        <th>Observatii</th>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoana1&gt</td>
+        <td>&ltTitlu Coloana 1&gt</td>
+        <td>&lttipControl1&gt</td>
+        <td>&ltobservatiiColoana1&gt</td>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoana2&gt</td>
+        <td>&ltTitlu Coloana 2&gt</td>
+        <td>&lttipControl2&gt</td>
+        <td>&ltobservatiiColoana2&gt</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>&ltTitlu grupare coloane K&gt</td>
+        <td>&ltTipGrupareColoaneK&gt</td>
+        <td>&ltobservatiiGrupareColoaneK&gt</td>
+    </tr>
+    <tr>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+        <td>...</td>
+    </tr>
+    <tr>
+        <td>&ltproprietateColoanaN&gt</td>
+        <td>&ltTitlu Coloana N&gt</td>
+        <td>&lttipControlN&gt</td>
+        <td>&ltobservatiiColoanaN&gt</td>
+    </tr>
+</table>
+
+**Exemplu:**
+
+**Sesizare**
+|Proprietate|Tip|Observatii|
+|---|---|---|
+|id|id!||
+|nrDocument|text||
+|dataDocument|date||
+|stare|text||
+|nume|text||
+|prenume|text||
+|cnp|text||
+
+**TabelaDocumente** mosteneste **Table**\<Sesizare\>
+<table>
+    <tr>
+        <th>Proprietate</th>
+        <th>Titlu</th>
+        <th>Tip Control</th>
+        <th>Observatii</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Document</td>
+        <td>TabelaDocumente_Document</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>nume</td>
+        <td>Nume</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>prenume</td>
+        <td>Prenume</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>cnp</td>
+        <td>CNP</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Button</td>
+        <td>
+<pre>
+fie buton: Button = butonul din rand
+fie rand: Sesizare = randul curent
+
+buton.label = "Editează"
+
+daca rand.stare = "finalizat"
+    buton.disabled = true
+
+la apasarea butonului se deschide sesizarea cu id = rand.id
+</pre>
+        </td>
+    </tr>
+</table>
+
+**TabelaDocumente_Document** mosteneste **TableColumnGroup**
+<table>
+    <tr>
+        <th>Proprietate</th>
+        <th>Titlu</th>
+        <th>Tip Control</th>
+        <th>Observatii</th>
+    </tr>
+    <tr>
+        <td>nrDocument</td>
+        <td>Număr document</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>dataDocument</td>
+        <td>Dată document</td>
+        <td>Label</td>
+        <td></td>
+    </tr>
+</table>
